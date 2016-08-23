@@ -1,0 +1,244 @@
+- Class: meta
+  Course: Introduction
+  Lesson: 1.2
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.2
+
+- Class: text
+  Output: Hi there! Welcome to R! R is a one of the most powerful and most widely used statistical software. 
+           R lets you quickly and easily interpret, interact with, and visualize data. Press enter to move on.
+
+- Class: text
+  Output: That might sound scary, but do not worry! 
+           This script is meant to help you understand the basics of R. Press enter when you are ready to start!
+
+- Class: text
+  Output: In order to get R to do anything, you have to type a command. 
+           A command is you telling R what to do.
+
+- Class: text
+  Output: R is a programming language which means that in order to get things done, you must type it all in.
+
+- Class: text
+  Output: To type a command intro R, you just have to type it and things will then execute in the console - the bottom one.
+
+- Class: text
+  Output: For things to get executed, you have to press either Run - which is at the top of yout R Script, or Ctrl+Enter at the end of the command. 
+
+- Class: text
+  Output: How about we have a go at that?
+
+- Class: text
+  Output: R can be used for many things, such as a calculator. Next, try typing a command for some basic maths.
+
+- Class: cmd_question
+  Output: Let's try an easy one. What is 12*4? Type it below to see R work as a calculator.
+  CorrectAnswer: 12*4
+  AnswerTests: any_of_exprs('12*4', '12 * 4', '4*12', '4 * 12')
+  Hint: Simply type in the mathematical operation.
+
+- Class: text
+  Output: Not too bad, right? How about a couple more?
+
+- Class: cmd_question
+  Output: Add up 3 and 25, just as you would in a calculator.
+  CorrectAnswer: 3+25
+  AnswerTests: any_of_exprs('3+25', '3 + 25', '25+3', '25 + 3')
+  Hint: Simply type them in!
+
+- Class: cmd_question
+  Output: Last one. What is 123 divided by 4.2?
+  CorrectAnswer: 123/4.2
+  AnswerTests: any_of_exprs('123/4.2', '123 / 4.2')
+  Hint: hint
+
+- Class: text
+  Output: But R is more than a calculator. 
+           You can upload datasets and work with them. 
+           A dataset is a collection of data. 
+           We will now focus on one tiny data set and start exploring it.
+
+- Class: text
+  Output: To be able to look at a data set, you must first load it. This is also called importing the data.
+
+- Class: text
+  Output: You can do this two ways. You'll need to have the dataset downloaded already. 
+           First, you can import it in the Environment - on the right of your screen. Click Import Dataset from Text file and look for music.csv.
+           Second, you can write a command. Let's try this one together.
+
+- Class: cmd_question
+  Output: music <- read.csv(file.choose(''), header=TRUE)
+           This command uses file location. Copy this command and execute it. Then, find the music.csv file in your computer.
+  CorrectAnswer: music <- read.csv(file.choose(''), header=TRUE)
+  AnswerTests: omnitest(correctExpr='music <- read.csv(file.choose(''), header=TRUE)')
+  Hint: Just copy the command and go from there.
+
+- Class: text
+  Output: To explore the data, you can use the view() and head() commands.
+
+- Class: cmd_question
+  Output: Type in view(music) to have a look at the dataset. 
+           View() will show you any dataset and the (music) part makes it specific to this one.
+           View() opens your dataset in a new window, at the top of the working R Script.
+  CorrectAnswer: view(music)
+  AnswerTests: omnitest(correctExpr='view(music)')
+  Hint: hint
+
+- Class: cmd_question
+  Output: Typing in head(music) will show you all the data in the Console, without opening a new window.
+           It's sometimes easier to do that with small datasets.
+  CorrectAnswer: head(music)
+  AnswerTests: omnitest(correctExpr='head(music)')
+  Hint: hint
+
+- Class: text
+  Output: This dataset is a small collection of data about 6 artists.
+           Women are coded as 1 and men are coded as 0.
+
+- Class: text
+  Output: To understand this data, we'll do some quick summary statistics. 
+           These give us an overview of the dataset. 
+           It's helpful to do those when you start working with new datasets or to refresh your memory on old ones.
+
+- Class: cmd_question
+  Output: Using one command, you can visualise a variable summary for the music data set. 
+           This is done using the summary() command. Try executing the command yourself!
+  CorrectAnswer: summary(music)
+  AnswerTests: omnitest(correctExpr='summary(music)')
+  Hint: Type ?summary.
+
+- Class: text
+  Output: The summary() function is a great way to observe central tendency. 
+           Colloquially, measures of central tendency are often called averages. 
+           They show how the data is spread.
+
+- Class: mult_question
+  Output: What is the mean?
+  AnswerChoices: Sum of all the numbers divided by the number of numbers.;Most occuring number.;The middle number in a given sequence.
+  CorrectAnswer: Sum of all the numbers divided by the number of numbers.
+  AnswerTests: omnitest(correctVal='Sum of all the numbers divided by the number of numbers.')
+  Hint: Type ?mean. Think average.
+
+- Class: mult_question
+  Output: And what is the median?
+  AnswerChoices: Sum of all the numbers divided by the number of numbers.;Most occuring number.;The middle number in a given sequence.
+  CorrectAnswer: The middle number in a given sequence.
+  AnswerTests: omnitest(correctVal='The middle number in a given sequence.')
+  Hint: Type ?median. Think middle.
+
+- Class: text
+  Output: The only definition left is the one for mode.
+           The mode is the most occuring number.
+
+- Class: text
+  Output: Let's quickly go through mean, median and mode with these quesions.
+
+- Class: exact_question
+  Output: What is the mean of this vector? 2, 4, 6, 8
+  CorrectAnswer: 5
+  AnswerTests: omnitest(correctVal=5)
+  Hint: Think average.
+
+- Class: exact_question
+  Output: What is the median of this vector? 9, 7, 10, 6, 5
+  CorrectAnswer: 7
+  AnswerTests: omnitest(correctVal=7)
+  Hint: Think middle.
+
+- Class: mult_question
+  Output: What kind of mode does this vector have? 1, 3, 3, 3, 4, 4, 6, 6, 6, 9
+  AnswerChoices: Unimodal;Bimodal;Trimodal
+  CorrectAnswer: Bimodal
+  AnswerTests: omnitest(correctVal='Bimodal')
+  Hint: Some vectors can have more than one mode. How many numbers reccur for the same amount of times?
+
+- Class: exact_question
+  Output: And one more: What is the average of this vector? 3, 5, 7, 11, 4
+  CorrectAnswer: 6
+  AnswerTests: omnitest(correctVal=6)
+  Hint: What measure of central tendency is an average?
+
+- Class: text
+  Output: Great! Now you understand what these 3 measures of central tendency mean, let's learn some commands for each individual one. 
+           This makes it easier to fetch just one of them if you need it.
+
+- Class: text
+  Output: Remember how in the summary() command putting music inside the () made the summary specific to this dataset?
+           You can make commands specific to variables of the dataset using the $ sign. Have a go at it!
+
+- Class: cmd_question
+  Output: You can find the mean of a variable with the mean() command.
+           Now, find the mean of the no_album variable.
+           For this, you'll ned to connect the music dataset to the no_album variable with the $ symbol.
+  CorrectAnswer: mean(music$no_album)
+  AnswerTests: omnitest(correctExpr='mean(music$no_album)')
+  Hint: To link music and no_ablum, you need to type (music$no_album)
+
+- Class: text
+  Output: Look at the data again. You can see that Skrillex's no_tours is NA, which means the data is missing.
+
+- Class: text
+  Output: Because some data is missing, you'll need to tell R to omit it. 
+           Let's do that step by step.
+
+- Class: cmd_question
+  Output: First, find out the average number of tours performed by all the artists in the music dataset using a comand.
+  CorrectAnswer: mean(music$no_tours)
+  AnswerTests: any_of_exprs('mean(music$no_tours)', 'mean (music$no_tours)')
+  Hint: The mean is the average. Type ?mean if you're stuck and remember to connect music to no_tours with $.
+
+- Class: text
+  Output: This didn't work because we didn't omit the NA value. So far, you should have mean(music$no_tours).
+
+- Class: text
+  Output: You have two options for dealing with the NA.
+           First, adding na.omit() in front of the variable, in this case, music$no_tours.
+           Second, adding na.rm=TRUE after the variable. 
+           Why don't you try now?
+
+- Class: cmd_question
+  Output: Find out the average number of tours performed by all the artists in the music dataset using a command.
+           Please use the na.omit() function.
+  CorrectAnswer: mean(na.omit(music$no_tours))
+  AnswerTests: any_of_exprs('mean(na.omit(music$no_tours))', 'mean( na.omit (music$no_tours) )')
+  Hint: Remember to omit the NA!
+
+- Class: cmd_question
+  Output: Finally, write the same command, but this time, please use na.rm=TRUE.
+  CorrectAnswer: mean((music$no_tours),na.rm=TRUE)
+  AnswerTests: any_of_exprs('mean((music$no_tours),na.rm=TRUE)', 
+           'mean( (music$no_tours), na.rm=TRUE)', 'mean((music$no_tours),na.rm=T)' )
+  Hint: R is case sensitive. You'll need to have TRUE all in capitals.
+
+- Class: cmd_question
+  Output: Great work! Now, bring up the summary for the dataset again. Do you remember the command?
+  CorrectAnswer: summary(music)
+  AnswerTests: omnitest(correctExpr='summary(music)')
+  Hint: Type ?summary.
+
+- Class: mult_question
+  Output: Looking at the summary, which is the best measure of central tendency for for no_awards?
+            By looking at the minimum and maximum values, you'll be able to tell if the data is skewed. 
+            That means the data is asymetrical at one end.
+  AnswerChoices: Median;Mode;Mean
+  CorrectAnswer: Median
+  AnswerTests: omnitest(correctVal='Median')
+  Hint: Consider the max. value. Is it skewing the data?
+
+- Class: text
+  Output: And finally, one quick look at the mode.
+
+- Class: exact_question
+  Output: Looking at the dataset, what is the mode in the no_albums variable?
+  CorrectAnswer: 8
+  AnswerTests: omnitest(correctVal=8)
+  Hint: Think most occuring.
+
+- Class: text
+  Output: Well done! You've survived your R initiation!
+           Now you know R can be used just as a calculator or as way to work out measures of central tendency.
+           These questions showed you what mean, median and mode are. 
+           If things are still a bit confusing, have another go at this script. 
+           If you've aced it, congrats!
